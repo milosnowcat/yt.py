@@ -53,11 +53,24 @@ import requests
 from io import BytesIO
 
 def select_font(type):
+    """
+    The function `select_font` takes a font type as input and returns the corresponding font file.
+    
+    :param type: The "type" parameter is a string that represents the specific font type or style that
+    you want to select. It is used to construct the font path by appending it to the base font file name
+    "Poppins-" and the file extension ".ttf"
+    :return: the variable `my_font`, which is an instance of the `TTFont` class.
+    """
     font_path = f"assets/fonts/Poppins-{type}.ttf"
     my_font = TTFont(font_path) 
     return my_font
 
 def peek_video():
+    """
+    The function `peek_video` takes a YouTube video URL as input, retrieves information about the video
+    (title and author), and displays the video's thumbnail image.
+    :return: the YouTube video object.
+    """
     url = link_input.get()
     video = YouTube(url)
 
@@ -72,10 +85,16 @@ def peek_video():
     return video
 
 def download_video():
+    """
+    The function `download_video` downloads the highest resolution video from a source and prints a
+    message indicating that the video has been downloaded.
+    """
     video = peek_video().streams.get_highest_resolution()
     video.download()
     print(f"{video.title}.mp4 has been downloaded")
 
+# The code is creating a graphical user interface (GUI) for a YouTube video downloader application
+# using the `tkinter` library.
 root = ttk.Window(themename="vapor")
 root.title("YT.py")
 root.geometry("700x500")
